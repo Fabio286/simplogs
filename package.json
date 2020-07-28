@@ -1,5 +1,5 @@
 {
-  "name": "simplogs",
+  "name": "@fabio286/simplogs",
   "version": "0.0.1",
   "description": "A simple module that creates app file logs.",
   "main": "index.js",
