@@ -1,5 +1,7 @@
 # SimpLogs
 
+[![Build Status](https://travis-ci.com/Fabio286/simplogs.svg?branch=master)](https://travis-ci.com/Fabio286/simplogs) ![GitHub package.json version](https://img.shields.io/github/package-json/v/fabio286/simplogs) ![GitHub](https://img.shields.io/github/license/fabio286/simplogs)
+
 A simple module that creates app file logs.  
 I've made this module to have a light weight and simple way to track trace and error logs in my small and mid size projects.
 
