@@ -5,7 +5,7 @@
 A simple module that creates app file logs.  
 I've made this module to have a light weight and simple way to track trace and error logs in my small and mid size projects.
 
-However, if you are here maybe this small piece of code can be handy for yout purpose.
+However, if you are here maybe this small piece of code can be handy for your purpose.
 
 ## Installation
 
