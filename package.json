@@ -1,6 +1,6 @@
 {
   "name": "@fabio286/simplogs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple module that creates app file logs.",
   "main": "index.js",
   "scripts": {
@@ -31,5 +31,8 @@
     "mocha": "^7.1.2"
   },
   "author": "Fabio Di Stasio",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "app-root-path": "^3.0.0"
+  }
 }

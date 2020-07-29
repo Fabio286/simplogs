@@ -9,6 +9,17 @@ However, if you are here maybe this small piece of code can be handy for your pu
 
 ## Installation
 
+### Add GitHub registry
+
+Add `@fabio286:registry=https://npm.pkg.github.com` to `.npmrc` file like follow:
+
+```properties
+@fabio286:registry=https://npm.pkg.github.com
+registry=https://registry.npmjs.org
+```
+
+### Install
+
 ```bash
 npm install --save @fabio286/simplogs
 ```
