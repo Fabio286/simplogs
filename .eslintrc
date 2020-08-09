@@ -6,6 +6,7 @@
     },
     "extends": [
         "standard",
+        "plugin:@typescript-eslint/recommended",
         "plugin:mocha/recommended"
     ],
     "parserOptions": {
@@ -39,9 +40,11 @@
             "multi-or-nest"
         ],
         "no-console": "off",
-        "no-undef": "off"
+        "no-undef": "off",
+        "@typescript-eslint/type-annotation-spacing": 2
     },
     "plugins": [
-        "mocha"
+        "mocha",
+        "@typescript-eslint"
     ]
 }

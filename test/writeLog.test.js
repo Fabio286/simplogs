@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const chai = require('chai');
 chai.use(require('chai-fs'));
 chai.should();
 const fs = require('fs');
 const path = require('path');
 
-const { writeTrace, writeError } = require('../index');
+const { writeTrace, writeError } = require('../dist/index');
 
 const fd = new Date();
 const y = fd.getFullYear();

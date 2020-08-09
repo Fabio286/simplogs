@@ -1,14 +1,19 @@
 'use strict';
-const fs = require('fs');
-const appPath = require('app-root-path');
+import fs from 'fs';
+import appPath from 'app-root-path';
 
-const writeLogs = {
+interface WriteLogs {
+   writeTrace: (trace: string) => Promise<void>,
+   writeError: (err: Error | string) => Promise<void>,
+}
+
+const writeLogs: WriteLogs = {
    /**
     * Writes a log on yyyymmdd-trace.log file
     *
-    * @param {*} trace Trace to write on log
+    * @param {String} trace Trace to write on log
     */
-   writeTrace (trace) {
+   writeTrace (trace: string): Promise<void> {
       return new Promise((resolve, reject) => {
          const fd = new Date();
          const y = fd.getFullYear();
@@ -39,12 +44,12 @@ const writeLogs = {
    /**
     * Writes a log on yyyymmdd-err.log file
     *
-    * @param {*} err Error to write on log
+    * @param {String} err Error to write on log
     */
-   writeError (err) {
+   writeError (err: Error | string): Promise<void> {
       return new Promise((resolve, reject) => {
          let errMsg;
-         if (Object.prototype.hasOwnProperty.call(err, 'stack'))
+         if (Object.prototype.hasOwnProperty.call(err, 'stack') && err instanceof Error)
             errMsg = err.stack;
          else if (typeof err === 'object')
             errMsg = `Error: ${JSON.stringify(err, null, 3)}`;
@@ -79,4 +84,4 @@ const writeLogs = {
 
 };
 
-module.exports = writeLogs;
+export { writeLogs };
