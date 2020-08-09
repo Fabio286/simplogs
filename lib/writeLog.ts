@@ -3,17 +3,25 @@ import fs from 'fs';
 import appPath from 'app-root-path';
 
 interface WriteLogs {
-   writeTrace: (trace: string) => Promise<void>,
-   writeError: (err: Error | string) => Promise<void>,
-}
-
-const writeLogs: WriteLogs = {
    /**
     * Writes a log on yyyymmdd-trace.log file
     *
     * @param {String} trace Trace to write on log
+    * @returns {Promise<void>} Promise
     */
-   writeTrace (trace: string): Promise<void> {
+   writeTrace: (trace: string) => Promise<void>,
+
+   /**
+    * Writes a log on yyyymmdd-err.log file
+    *
+    * @param {String} err Error to write on log
+    * @returns {Promise<void>} Promise
+    */
+   writeError: (err: Error | string) => Promise<void>,
+}
+
+const writeLogs: WriteLogs = {
+   writeTrace (trace) {
       return new Promise((resolve, reject) => {
          const fd = new Date();
          const y = fd.getFullYear();
@@ -41,12 +49,7 @@ const writeLogs: WriteLogs = {
       });
    },
 
-   /**
-    * Writes a log on yyyymmdd-err.log file
-    *
-    * @param {String} err Error to write on log
-    */
-   writeError (err: Error | string): Promise<void> {
+   writeError (err) {
       return new Promise((resolve, reject) => {
          let errMsg;
          if (Object.prototype.hasOwnProperty.call(err, 'stack') && err instanceof Error)
