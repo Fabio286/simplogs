@@ -1,6 +1,9 @@
-'use strict';
 import fs from 'fs';
 import appPath from 'app-root-path';
+let logRoot: string = appPath as never;
+
+if ('pkg' in process)
+   logRoot = process.cwd();
 
 interface WriteLogs {
    /**
@@ -33,15 +36,15 @@ const writeLogs: WriteLogs = {
          const ms = fd.getMilliseconds().toString().padStart(3, '0');
          const string = `${d}/${m}/${y} ${H}:${i}:${s}.${ms} - ${trace}\r\n`;
 
-         fs.access(`${appPath}/logs`, err => {
+         fs.access(`${logRoot}/logs`, err => {
             if (err) {
                try {
-                  fs.mkdirSync(`${appPath}/logs`);
+                  fs.mkdirSync(`${logRoot}/logs`);
                }
                catch (err) {}
             }
 
-            fs.appendFile(`${appPath}/logs/${y}${m}${d}-trace.log`, string, 'utf-8', err => {
+            fs.appendFile(`${logRoot}/logs/${y}${m}${d}-trace.log`, string, 'utf-8', err => {
                if (err) reject(err);
                resolve();
             });
@@ -69,15 +72,15 @@ const writeLogs: WriteLogs = {
          const ms = fd.getMilliseconds().toString().padStart(3, '0');
          const string = `${d}/${m}/${y} ${H}:${i}:${s}.${ms} - ${errMsg}\r\n`;
 
-         fs.access(`${appPath}/logs`, err => {
+         fs.access(`${logRoot}/logs`, err => {
             if (err) {
                try {
-                  fs.mkdirSync(`${appPath}/logs`);
+                  fs.mkdirSync(`${logRoot}/logs`);
                }
                catch (err) {}
             }
 
-            fs.appendFile(`${appPath}/logs/${y}${m}${d}-err.log`, string, 'utf-8', err => {
+            fs.appendFile(`${logRoot}/logs/${y}${m}${d}-err.log`, string, 'utf-8', err => {
                if (err) reject(err);
                resolve();
             });
